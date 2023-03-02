@@ -1,0 +1,22 @@
+html, body {
+    background: #f4f1de;
+}
+
+tr {
+    cursor: pointer;
+}
+
+.navbar,
+#navbar { 
+    background: #222;
+}
+
+.navbar *,
+#nabar * {
+    color: #727272;
+}
+
+a.navbar-item:hover {
+    background: inherit;
+    color: white;
+}
