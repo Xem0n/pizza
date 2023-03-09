@@ -20,3 +20,11 @@ a.navbar-item:hover {
     background: inherit;
     color: white;
 }
+
+.columns, .column {
+    box-sizing: border-box;
+}
+
+.columns > .column:first-child {
+    margin-right: 10px;
+}
