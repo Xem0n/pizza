@@ -34,6 +34,10 @@
                     Potwierdz zamowenia
                 </a>
 
+                <a href="admin.php" class="navbar-item">
+                    Panel administratora
+                </a>
+
                 <?php
             }
 
