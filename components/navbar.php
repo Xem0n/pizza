@@ -15,7 +15,9 @@
 
             <?php
 
-            if ($_SESSION["user"] ?? null) {
+            $user = $_SESSION["user"] ?? null;
+
+            if ($user && $user->role == "user") {
                 ?>
 
                 <a href="history.php" class="navbar-item">
@@ -25,7 +27,7 @@
                 <?php
             }
 
-            if ($_SESSION["user"]->role == "admin") {
+            if ($user && $user->role == "admin") {
                 ?>
 
                 <a href="confirm.php" class="navbar-item">
