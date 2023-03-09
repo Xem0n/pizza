@@ -21,11 +21,23 @@ function pizza_show() {
 
                 <br>
 
-                <form action="order.php" method="post">
-                    <input type="hidden" id="id" name="id" value="<?= $pizza[0] ?>">
+                <?php
 
-                    <button class="button">Zamow</button>
-                </form>
+                $user = $_SESSION["user"] ?? null;
+
+                if (!$user || $user->role == "user") {
+                    ?>
+
+                    <form action="order.php" method="post">
+                        <input type="hidden" id="id" name="id" value="<?= $pizza[0] ?>">
+
+                        <button class="button">Zamow</button>
+                    </form>
+
+                    <?php
+                }
+
+                ?>
             </div>
         </div>
 
@@ -69,7 +81,7 @@ function pizza_order($pizza_id, $target_id) {
         $target_id = $user->id;
     }
 
-    if ($user->id != $target_id && $user->role != "admin") {
+    if ($user->role != "user") {
         return;
     }
 
