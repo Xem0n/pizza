@@ -138,6 +138,20 @@ function pizza_deliver($transaction_id) {
     $query->execute();
 }
 
+function pizza_prepared($transaction_id) {
+    global $mysqli;
+
+    $user = $_SESSION["user"] ?? null;
+
+    if ($user == null || $user->role != "admin") {
+        return;
+    }
+
+    $query = $mysqli->prepare("UPDATE transactions SET prepared_time = CURRENT_TIMESTAMP WHERE id = ?");
+    $query->bind_param("i", $transaction_id);
+    $query->execute();
+}
+
 function pizza_get_history_price() {
     global $mysqli;
 
