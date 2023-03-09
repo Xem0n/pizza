@@ -177,7 +177,7 @@ function pizza_show_history() {
         return;
     }
 
-    $history = $mysqli->prepare("SELECT pizza.name, transactions.price, transactions.bought_time, transactions.received_time FROM transactions JOIN pizza ON pizza.id = transactions.pizza_id WHERE receiver_id = ? ORDER BY transactions.bought_time DESC");
+    $history = $mysqli->prepare("SELECT pizza.name, transactions.price, transactions.bought_time, transactions.received_time, transactions.delivery_time, transactions.prepared_time FROM transactions JOIN pizza ON pizza.id = transactions.pizza_id WHERE receiver_id = ? ORDER BY transactions.bought_time DESC");
     $history->bind_param("i", $user->id);
     $history->execute();
     $history = $history->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -194,7 +194,7 @@ function pizza_show_history() {
 
                     echo $order["name"];
                     echo " - ";
-                    echo $received ? "Otrzymano - " . $order["received_time"] : "W przygotowaniu";
+                    echo $received ? "Zakonczone" : "W trakcie";
 
                     ?>
                 </div>
@@ -202,7 +202,10 @@ function pizza_show_history() {
             <div class="card-content">
                 <p>$<?= $order["price"] ?></p>
                 <br>
-                <p><?= $order["bought_time"] ?></p>
+                <p>Zakupiono - <?= get_time_string($order["bought_time"]) ?></p>
+                <p>Przygotowano - <?= get_time_string($order["prepared_time"]) ?></p>
+                <p>Wyslano - <?= get_time_string($order["delivery_time"]) ?></p>
+                <p>Odebrano - <?= get_time_string($order["received_time"]) ?></p>
             </div>
         </div>
 
@@ -210,4 +213,8 @@ function pizza_show_history() {
 
         <?php
     }
+}
+
+function get_time_string($time) {
+    return $time != null ? $time : "W trakcie";
 }
