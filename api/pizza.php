@@ -115,6 +115,29 @@ function pizza_receive($transaction_id) {
     $query->execute();
 }
 
+function pizza_deliver($transaction_id) {
+    global $mysqli;
+
+    $user = $_SESSION["user"] ?? null;
+
+    if ($user == null || $user->role != "deliverer") {
+        return;
+    }
+
+    $query = $mysqli->prepare("SELECT prepared_time FROM transactions WHERE id = ?");
+    $query->bind_param("i", $transaction_id);
+    $query->execute();
+    $is_prepared = $query->get_result()->fetch_row()[0] != NULL;
+
+    if (!$is_prepared) {
+        return;
+    }
+
+    $query = $mysqli->prepare("UPDATE transactions SET delivery_time = CURRENT_TIMESTAMP WHERE id = ?");
+    $query->bind_param("i", $transaction_id);
+    $query->execute();
+}
+
 function pizza_get_history_price() {
     global $mysqli;
 
