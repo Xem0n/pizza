@@ -39,6 +39,7 @@ CREATE TABLE transactions (
     price FLOAT,
     bought_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     received_time DATETIME,
+    delivery_time DATETIME,
     prepared_time DATETIME,
     FOREIGN KEY (pizza_id) REFERENCES pizza (id),
     FOREIGN KEY (receiver_id) REFERENCES user (id),
