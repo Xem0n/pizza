@@ -5,19 +5,19 @@ require_once "db.php";
 function pizza_show() {
     global $mysqli;
 
-    $pizzas = $mysqli->query("SELECT id, name, description, price FROM pizza")->fetch_all();
+    $pizzas = $mysqli->query("SELECT id, name, description, price FROM pizza")->fetch_all(MYSQLI_ASSOC);
 
     foreach ($pizzas as $pizza) {
         ?>
 
         <div class="card">
             <div class="card-header">
-                <div class="card-header-title"><?= $pizza[1] ?></div>
+                <div class="card-header-title"><?= $pizza["name"] ?></div>
             </div>
             <div class="card-content">
-                <p><?= $pizza[2] ?></p>
+                <p><?= $pizza["description"] ?></p>
                 <br>
-                <p>$<?= $pizza[3] ?></p>
+                <p>$<?= $pizza["price"] ?></p>
 
                 <br>
 
@@ -29,7 +29,7 @@ function pizza_show() {
                     ?>
 
                     <form action="order.php" method="post">
-                        <input type="hidden" id="id" name="id" value="<?= $pizza[0] ?>">
+                        <input type="hidden" id="id" name="id" value="<?= $pizza["id"] ?>">
 
                         <button class="button">Zamow</button>
                     </form>
