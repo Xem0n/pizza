@@ -31,5 +31,7 @@ a.navbar-item:hover {
 }
 
 .columns > .column:first-child {
+    position: sticky;
+    top: 80px;
     margin-right: 10px;
 }
