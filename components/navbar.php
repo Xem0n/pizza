@@ -27,7 +27,7 @@
                 <?php
             }
 
-            if ($user && $user->role == "admin") {
+            if ($user && ($user->role == "admin" || $user->role == "deliverer")) {
                 ?>
 
                 <a href="confirm.php" class="navbar-item">
