@@ -97,7 +97,16 @@ function pizza_receive($transaction_id) {
 
     $user = $_SESSION["user"] ?? null;
 
-    if ($user == null || $user->role != "admin") {
+    if ($user == null || $user->role != "deliverer") {
+        return;
+    }
+
+    $query = $mysqli->prepare("SELECT delivery_time FROM transactions WHERE id = ?");
+    $query->bind_param("i", $transaction_id);
+    $query->execute();
+    $is_delivered = $query->get_result()->fetch_row()[0] != NULL;
+
+    if (!$is_delivered) {
         return;
     }
 
