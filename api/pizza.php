@@ -61,16 +61,6 @@ function pizza_exist($id) {
     return $pizza->get_result()->num_rows > 0;
 }
 
-function pizza_get_price($id) {
-    global $mysqli;
-
-    $pizza = $mysqli->prepare("SELECT price FROM pizza WHERE id=?");
-    $pizza->bind_param("i", $id);
-    $pizza->execute();
-
-    return $pizza->get_result()->fetch_row()[0];
-}
-
 function pizza_order($pizza_id, $target_id) {
     global $mysqli;
 
