@@ -1,7 +1,5 @@
 <?php
 
-include_once "components/header.php";
-
 require_once "api/db.php";
 require_once "api/pizza.php";
 
@@ -109,7 +107,5 @@ foreach ($transactions as $transaction) {
 
     <?php
 }
-
-include_once "components/footer.php";
 
 ?>
