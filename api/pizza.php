@@ -5,9 +5,13 @@ require_once "db.php";
 function pizza_show() {
     global $mysqli;
 
-    $pizzas = $mysqli->query("SELECT id, name, description, price FROM pizza")->fetch_all(MYSQLI_ASSOC);
+    $pizzas = $mysqli->query("SELECT id, name, description, price, deleted FROM pizza")->fetch_all(MYSQLI_ASSOC);
 
     foreach ($pizzas as $pizza) {
+        if ($pizza["deleted"]) {
+            continue;
+        }
+
         ?>
 
         <div class="card">
