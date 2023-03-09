@@ -89,7 +89,14 @@ function pizza_order($pizza_id, $target_id) {
         return;
     }
 
-    $price = pizza_get_price($pizza_id);
+    $pizza = $mysqli->prepare("SELECT price, deleted FROM pizza WHERE id=?");
+    $pizza->bind_param("i", $pizza_id);
+    $pizza->execute();
+    $pizza = $pizza->get_result()->fetch_assoc();
+
+    if ($pizza["deleted"]) {
+        return;
+    }
 
     $transaction = $mysqli->prepare("INSERT INTO transactions (pizza_id, receiver_id, buyer_id, price) VALUES (?, ?, ?, ?)");
     $transaction->bind_param("iiid", $pizza_id, $target_id, $user->id, $price);
