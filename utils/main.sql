@@ -7,7 +7,7 @@ CREATE TABLE user (
     email varchar(320) UNIQUE NOT NULL,
     username varchar(24) NOT NULL,
     password varchar(255) NOT NULL,
-    role ENUM('user', 'admin') DEFAULT 'user',
+    role ENUM('user', 'admin', 'deliverer') DEFAULT 'user',
     register_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -15,7 +15,8 @@ CREATE TABLE pizza (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name varchar(100),
     description varchar(500),
-    price FLOAT
+    price FLOAT,
+    deleted BOOLEAN DEFAULT FALSE
 );
 
 INSERT INTO user (
@@ -38,6 +39,7 @@ CREATE TABLE transactions (
     price FLOAT,
     bought_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     received_time DATETIME,
+    prepared_time DATETIME,
     FOREIGN KEY (pizza_id) REFERENCES pizza (id),
     FOREIGN KEY (receiver_id) REFERENCES user (id),
     FOREIGN KEY (buyer_id) REFERENCES user (id)
