@@ -29,6 +29,11 @@ INSERT INTO user (
     'admin',
     '',
     'admin'
+), (
+    'dostawca@email.com',
+    'dostawca',
+    '',
+    'deliverer'
 );
 
 CREATE TABLE transactions (
