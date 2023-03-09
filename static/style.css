@@ -25,6 +25,11 @@ a.navbar-item:hover {
     box-sizing: border-box;
 }
 
+.columns > .column {
+    min-height: 80vh;
+    height: 100%;
+}
+
 .columns > .column:first-child {
     margin-right: 10px;
 }
