@@ -89,7 +89,7 @@ function pizza_order($pizza_id, $target_id) {
     }
 
     $transaction = $mysqli->prepare("INSERT INTO transactions (pizza_id, receiver_id, buyer_id, price) VALUES (?, ?, ?, ?)");
-    $transaction->bind_param("iiid", $pizza_id, $target_id, $user->id, $price);
+    $transaction->bind_param("iiid", $pizza_id, $target_id, $user->id, $pizza["price"]);
     $transaction->execute();
 }
 
