@@ -5,7 +5,7 @@ include_once "components/header.php";
 require_once "api/db.php";
 require_once "api/pizza.php";
 
-if (!$_SESSION["user"] ?? null || $_SESSION["user"]->role != "admin") {
+if (($_SESSION["user"] ?? null) == NULL || $_SESSION["user"]->role == "user") {
     header("Location: login.php");
 }
 
