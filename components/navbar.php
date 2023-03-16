@@ -30,10 +30,6 @@
             if ($user && ($user->role == "admin" || $user->role == "deliverer")) {
                 ?>
 
-                <a href="confirm.php" class="navbar-item">
-                    Potwierdz zamowenia
-                </a>
-
                 <a href="admin.php" class="navbar-item">
                     Panel administratora
                 </a>
