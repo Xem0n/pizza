@@ -2,6 +2,14 @@
 
 require_once "db.php";
 
+function pizza_all() {
+    global $mysqli;
+
+    $pizzas = $mysqli->query("SELECT * FROM pizza")->fetch_all(MYSQLI_ASSOC);
+
+    return $pizzas;
+}
+
 function pizza_show() {
     global $mysqli;
 
@@ -59,6 +67,14 @@ function pizza_exist($id) {
     $pizza->execute();
     
     return $pizza->get_result()->num_rows > 0;
+}
+
+function pizza_change_status($pizza_id) {
+    global $mysqli;
+
+    $query = $mysqli->prepare("UPDATE pizza SET deleted = NOT deleted WHERE id = ?");
+    $query->bind_param("i", $pizza_id);
+    $query->execute();
 }
 
 function pizza_order($pizza_id, $target_id) {
