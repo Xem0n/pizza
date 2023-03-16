@@ -13,19 +13,23 @@ $user = $_SESSION["user"];
 $pages = [
     "users" => [
         "file" => "users.php",
-        "name" => "Zarzadzaj uzytkownikami"
+        "name" => "Zarzadzaj uzytkownikami",
+        "roles" => ["admin"]
     ],
     "pizza" => [
         "file" => "pizza.php",
-        "name" => "Zarzadzaj pizzami"
+        "name" => "Zarzadzaj pizzami",
+        "roles" => ["admin"]
     ],
     "orders" => [
         "file" => "orders.php",
-        "name" => "Potwierdz zamowienia"
+        "name" => "Potwierdz zamowienia",
+        "roles" => ["admin", "deliverer"]
     ],
     "messages" => [
         "file" => "messages.php",
-        "name" => "Wiadomosci"
+        "name" => "Wiadomosci",
+        "roles" => ["admin"]
     ]
 ];
 
