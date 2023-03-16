@@ -42,7 +42,7 @@ $actions[$RECEIVED] = function($transaction) {
 function display_form($data, $status, $text) {
     ?>
 
-    <form action="?" method="post">
+    <form action="?page=orders" method="post">
         <input type="hidden" name="transaction_id" id="transaction_id" value="<?= $data["id"] ?>">
         <input type="hidden" name="status" id="status" value="<?= $status ?>">
         <button class="button is-primary"><?= $text ?></button>
