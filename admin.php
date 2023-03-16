@@ -16,6 +16,11 @@ $pages = [
         "name" => "Zarzadzaj uzytkownikami",
         "roles" => ["admin"]
     ],
+    "add_pizza" => [
+        "file" => "add_pizza.php",
+        "name" => "Dodaj pizze",
+        "roles" => ["admin"]
+    ],
     "pizza" => [
         "file" => "pizza.php",
         "name" => "Zarzadzaj pizzami",

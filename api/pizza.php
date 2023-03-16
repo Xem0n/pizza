@@ -59,6 +59,14 @@ function pizza_show() {
     }
 }
 
+function pizza_add($name, $description, $price) {
+    global $mysqli;
+
+    $query = $mysqli->prepare("INSERT INTO pizza (name, description, price) VALUES (?, ?, ?)");
+    $query->bind_param("ssd", $name, $description, $price);
+    $query->execute();
+}
+
 function pizza_exist($id) {
     global $mysqli;
 
