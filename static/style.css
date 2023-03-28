@@ -35,3 +35,7 @@ a.navbar-item:hover {
     top: 80px;
     margin-right: 10px;
 }
+
+.form-contents:first-of-type {
+    margin-right: 5px;
+}
