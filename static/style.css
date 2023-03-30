@@ -39,3 +39,34 @@ a.navbar-item:hover {
 .form-contents:first-of-type {
     margin-right: 5px;
 }
+
+.chat, .chat-open {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+
+.chat {
+    width: min(400px, 50%);
+}
+
+.chat-open {
+    aspect-ratio: 1/1;
+    width: 60px;
+
+    background: white;
+    border-radius: 50%;
+    border: 2px solid black;
+    color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+
+    cursor: pointer;
+}
+
+.chat-closed {
+    display: none;
+}
