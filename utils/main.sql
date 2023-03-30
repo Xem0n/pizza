@@ -51,6 +51,14 @@ CREATE TABLE transactions (
     FOREIGN KEY (buyer_id) REFERENCES user (id)
 );
 
+CREATE TABLE messages (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    sender INT NOT NULL,
+    receiver INT,
+    content VARCHAR(1024),
+    sent_time DATETIME
+);
+
 INSERT INTO pizza (
     name,
     description,

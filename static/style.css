@@ -50,6 +50,41 @@ a.navbar-item:hover {
     width: min(400px, 50%);
 }
 
+.chat > .message-body {
+    height: 60vh;
+
+    display: flex;
+    flex-flow: column-reverse nowrap;
+}
+
+.chat form {
+    display: flex;
+    flex-flow: row nowrap;
+
+    margin-top: 10px;
+}
+
+.chat .messages {
+    display: flex;
+    flex-flow: column nowrap;
+
+    overflow-y: scroll;
+    scroll-margin-bottom: 0;
+}
+
+.chat .messages .message {
+    width: 80%;
+
+    margin-bottom: 12px;
+    padding: 10px;
+
+    background: white;
+}
+
+.chat .messages .message.right {
+    align-self: flex-end;
+}
+
 .chat-open {
     aspect-ratio: 1/1;
     width: 60px;
